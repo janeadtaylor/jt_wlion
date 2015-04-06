@@ -27,8 +27,7 @@ if($_POST['email'] == "") {
             "pdf",
             "doc",
             "docx",
-            "txt",
-            "jpg"
+            "txt"
         );
         
         $extension = pathinfo($_FILES["myfile"]["name"], PATHINFO_EXTENSION);
