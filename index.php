@@ -3,10 +3,6 @@
 require_once 'core/db.php';
 require_once 'modules/jobs/model/jobs.php';
 require_once 'modules/jobs/data/job.php';
-require_once 'modules/resumes/model/resumes.php';
-require_once 'modules/resumes/data/resume.php';
-require_once 'modules/users/data/user.php';
-
 ?>
 
 <!DOCTYPE html>
