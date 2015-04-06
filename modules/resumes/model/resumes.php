@@ -35,9 +35,21 @@ class Resumes Extends DB {
         
         $resume = $data['resume'];
         $resume->setUser_id($newUserId);
+
+        $insertResumeSql = "INSERT INTO resumes (
+            job_id,
+            user_id,
+            name,
+            file)
+          VALUES (
+            '". $resume->getJob_id() ."',
+            '". $resume->getUser_id() ."',
+            '". $resume->getName() ."',
+            '". $resume->getFile() ."'
+        )";
+ 
+        $this->exec($insertResumeSql);
         
-        var_dump($resume);
-         
-        //return $this->exec($sql);
+        return mysqli_insert_id($this->mysqli);
     }
 }

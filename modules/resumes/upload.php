@@ -66,8 +66,8 @@ if($_POST['email'] == '') {
 
         $clientEmail = $client->getEmail();
         
-        //email the file to the client
-        emailFile($clientEmail, "New Resume Submission", "A new resume has been submitted. See the attached document.", $_FILES["myfile"]["name"]);
+        //email the file to the client (enable sendmail then uncomment the line below)
+        //emailFile($clientEmail, "New Resume Submission", "A new resume has been submitted. See the attached document.", $_FILES["myfile"]["name"]);
 
     } else {
         echo "<br />Error: You must select a file to upload.";
