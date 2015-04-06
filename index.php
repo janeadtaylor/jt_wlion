@@ -1,5 +1,5 @@
 <?php
-//bootstrap loading necessary files (would usually handle this with autoloading or a cleaner method)
+//loading necessary files (would usually handle this with bootstrap autoloading and utilizing front controller pattern)
 require_once 'core/db.php';
 require_once 'modules/jobs/model/jobs.php';
 require_once 'modules/jobs/data/job.php';
@@ -26,8 +26,7 @@ require_once 'modules/users/data/user.php';
               
                   foreach($allJobs as $job) { ?>
                     <option value="<?php echo $job->getId() ?>"><?php echo $job->getUserName() . ' - ' . $job->getJobName(); ?></option>
-              <?php
-                } ?>
+              <?php } ?>
             </select> 
             <br /><br />
             <div>Name: <input type="text" name="name" size="35"></div>

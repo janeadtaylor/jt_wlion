@@ -10,10 +10,8 @@ class Resumes Extends DB {
         parent::__construct();
     }
     
-    public function insert($data) {
-        
-        //@todo: insert a new user then insert a resume using the new user id
-
+    public function insert($data) {  
+        //insert a new user then insert a resume using the new user id
         $user = $data['user'];
         $user_type_id = $user->getUser_type_id();
 
@@ -34,6 +32,8 @@ class Resumes Extends DB {
         $newUserId = mysqli_insert_id($this->mysqli);
         
         $resume = $data['resume'];
+        
+        //set the new resume user id to the new user id just created
         $resume->setUser_id($newUserId);
 
         $insertResumeSql = "INSERT INTO resumes (

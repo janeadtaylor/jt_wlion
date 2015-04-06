@@ -68,7 +68,7 @@ if($_POST['email'] == "") {
     
             //get the client email address for the select job id
             $jobsDb = new Jobs();
-            $job = $jobsDb->getByUserIdByJobId($postData['jobId']);
+            $job = $jobsDb->getUserIdByJobId($postData['jobId']);
             
             $clientDb = new Users();
             $client = $clientDb->getById($job->getUserId());

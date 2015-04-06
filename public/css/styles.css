@@ -7,8 +7,9 @@ body {
 form {
 	display: block;
 	margin: 20px auto;
-	background: #eee;
+	background: #F4FFF4;
 	border-radius: 10px;
+	border : 1px solid #ddd;
 	padding: 15px;
 	width: 300px;
 }

@@ -33,8 +33,8 @@ class Jobs Extends DB {
         return $jobs;
     }
     
-    public function getByUserIdByJobId($id) {
-        $sql = "SELECT * from jobs WHERE id = $id";
+    public function getUserIdByJobId($id) {
+        $sql = "SELECT id, user_id from jobs WHERE id = $id";
          
         $results = $this->exec($sql);
         while($row = $results->fetch_assoc()) {
