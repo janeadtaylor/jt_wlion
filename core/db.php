@@ -5,7 +5,7 @@
  */
 
 class DB {
-    //update these value for the given environment
+    //update these values for the given environment
     private $db = 'jt_wlion';
     private $host = 'localhost';
     private $user = 'jt_wlion';
