@@ -18,7 +18,7 @@ require_once 'modules/users/data/user.php';
     <body>
        <form action="modules/resumes/upload.php" method="post" enctype="multipart/form-data">
             <h3>Submit Resume</h3>
-            <div>Job Title:</div>
+            <div>Please select which job you are applying for:</div>
             <select name="jobId" id="jobId">
               <?php
                   $jobsDB = new Jobs();
@@ -30,11 +30,11 @@ require_once 'modules/users/data/user.php';
                 } ?>
             </select> 
             <br /><br />
-            <div>Name: <input type="text" name="name" size="45"></div>
-            <div>Email: <input type="text" name="email" size="45"></div>
-            <div>Phone: <input type="text" name="phone"  maxlength="12" size="12"></div>
+            <div>Name: <input type="text" name="name" size="35"></div>
+            <div>Email: <input type="text" name="email" size="35"></div>
+            <div>Phone: <input type="text" name="phone"  maxlength="12" size="12" value="___-___-____" onfocus="clearInputText(this);"></div>
             <br />
-			<div>Resume Title: <input type="text" name="title"></div>
+			<div>Resume Title: <input type="text" name="title" size="23"></div>
 			<div>Select File: <input type="file" name="myfile"></div>
 			<br />
 			<div><input type="submit" value=""></div>
@@ -50,6 +50,7 @@ require_once 'modules/users/data/user.php';
         <script src="public/js/jquery.js"></script>
         <script src="public/js/jquery.form.js"></script>
         <script src="public/js/uploadProgress.js"></script>
+        <script src="public/js/functions.js"></script>
     </body>
 </html>
 
