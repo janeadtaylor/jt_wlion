@@ -10,7 +10,6 @@ class Resume {
     private $user_id;
     private $name;
     private $file;
-    private $date_created;
 
     public function __construct(){
     
@@ -57,14 +56,6 @@ class Resume {
     }
 
 	/**
-     * @return the $date_created
-     */
-    public function getDate_created()
-    {
-        return $this->date_created;
-    }
-
-	/**
      * @param int $id
      */
     public function setId($id)
@@ -102,14 +93,6 @@ class Resume {
     public function setFile($file)
     {
         $this->file = $file;
-    }
-
-	/**
-     * @param string $date_created
-     */
-    public function setDate_created($date_created)
-    {
-        $this->date_created = $date_created;
     }
 
 }
