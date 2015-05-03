@@ -21,7 +21,6 @@ class Users Extends DB {
         $results = $stmt->get_result();
 
         while($row = $results->fetch_array(MYSQLI_ASSOC)) {
-            $user = new Job();
             $user->setId($row["id"]);
             $user->setEmail($row["email"]);
         }
