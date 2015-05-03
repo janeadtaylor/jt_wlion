@@ -14,41 +14,41 @@ class Resumes Extends DB {
         //insert a new user then insert a resume using the new user id
         $user = $data['user'];
         $user_type_id = $user->getUser_type_id();
-
-        $insertUserSql = "INSERT INTO users (
+        
+        $sqlUsers = "INSERT INTO users (
             user_type_id, 
             name, 
             email, 
             phone) 
-          VALUES (
-            '". $user->getUser_type_id() ."',
-            '". $user->getName() ."',
-            '". $user->getEmail() ."',
-            '". $user->getPhone() ."'
-        )";
+          VALUES (?, ?, ?, ?)";
         
-        $this->exec($insertUserSql);
+        $userTypeId = $user->getUser_type_id();
+        $userName = $user->getName();
+        $userEmail = $user->getEmail();
+        $userPhone = $user->getPhone();
+        
+        $stmt = $this->mysqli->prepare($sqlUsers);
+        $stmt->bind_param("isss", $userTypeId, $userName, $userEmail, $userPhone);
+        $stmt->execute();
         
         $newUserId = mysqli_insert_id($this->mysqli);
         
         $resume = $data['resume'];
         
-        //set the new resume user id to the new user id just created
-        $resume->setUser_id($newUserId);
-
-        $insertResumeSql = "INSERT INTO resumes (
+        $sqlResumes = "INSERT INTO resumes (
             job_id,
             user_id,
             name,
             file)
-          VALUES (
-            '". $resume->getJob_id() ."',
-            '". $resume->getUser_id() ."',
-            '". $resume->getName() ."',
-            '". $resume->getFile() ."'
-        )";
- 
-        $this->exec($insertResumeSql);
+          VALUES (?, ?, ?, ?)";
+        
+        $jobId = $resume->getJob_id();
+        $resumeName = $resume->getName();
+        $resumeFile = $resume->getFile();
+        
+        $stmt = $this->mysqli->prepare($sqlResumes);
+        $stmt->bind_param("iiss", $jobId, $newUserId, $resumeName, $resumeFile);
+        $stmt->execute();
         
         return mysqli_insert_id($this->mysqli);
     }

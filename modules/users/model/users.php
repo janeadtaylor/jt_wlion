@@ -11,12 +11,16 @@ class Users Extends DB {
     }
     
     public function getById($id) {
-        $sql = "SELECT * from users WHERE id = $id";
+        $sql = "SELECT * from users WHERE id = ?";
        
         $user = new User();
         
-        $results = $this->exec($sql);     
-        while($row = $results->fetch_assoc()) {
+        $stmt = $this->mysqli->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $results = $stmt->get_result();
+
+        while($row = $results->fetch_array(MYSQLI_ASSOC)) {
             $user = new Job();
             $user->setId($row["id"]);
             $user->setEmail($row["email"]);

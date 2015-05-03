@@ -19,8 +19,12 @@ class Jobs Extends DB {
        
         $jobs = array();
         
-        $results = $this->exec($sql);     
-        while($row = $results->fetch_assoc()) {
+        $stmt = $this->mysqli->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->get_result();
+        
+
+        while($row = $results->fetch_array(MYSQLI_ASSOC)) {
             $newJob = new Job();
             $newJob->setId($row["id"]);
             $newJob->setUserName($row["userName"]);
@@ -34,10 +38,14 @@ class Jobs Extends DB {
     }
     
     public function getUserIdByJobId($id) {
-        $sql = "SELECT id, user_id from jobs WHERE id = $id";
+        $sql = "SELECT id, user_id from jobs WHERE id = ?";
          
-        $results = $this->exec($sql);
-        while($row = $results->fetch_assoc()) {
+        $stmt = $this->mysqli->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $results = $stmt->get_result();
+
+        while($row = $results->fetch_array(MYSQLI_ASSOC)) {
             $newJob = new Job();
             $newJob->setId($row["id"]);
             $newJob->setUserId($row["user_id"]);
